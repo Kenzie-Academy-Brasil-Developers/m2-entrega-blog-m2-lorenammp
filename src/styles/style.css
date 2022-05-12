@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Archivo Narrow', sans-serif;
+    background-color: #eeeeee;
+}
+
+.page-header {
+    background-color: #6495ED;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.main-content {
+    width: 90vw;
+    margin: auto;
+}
+
+.card {
+    box-sizing: border-box;
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 22px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 6px, rgba(0, 0, 0, 0.10) 0px 3px 6px;
+    color: #5F5C5C;
+    line-height: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.card-content {
+    width: 70%;
+    line-height: 26px;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.card-info {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 1280px) {
+    .main-content {
+        width: 50vw;
+    }
+
+    .card-content {
+        width: 80%;
+    }
+
+    .card-info {
+        flex-wrap: wrap;
+        width: 5%;
+        align-items: flex-end;
+        align-content: flex-end;
+        justify-content: center;
+    }
+}
