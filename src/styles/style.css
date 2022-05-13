@@ -1,27 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&display=swap');
 
 body {
-    font-family: 'Archivo Narrow', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
     background-color: #eeeeee;
 }
 
 .page-header {
+    box-sizing: border-box;
     background-color: #6495ED;
-    height: 60px;
+    height: 120px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 25px;
 }
 
-h1 {
-    font-family: 'Oswald', sans-serif;
+.pageTitle {
+    width: 50vw;
+    margin: 40px auto;
+    text-align: center;
+    line-height: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 22px;
 }
 
 .main-content {
     width: 90vw;
-    margin: auto;
+    margin: 20px auto;
+}
+
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #6495ED;
+}
+
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #EDBC64;
+}
+
+.form-content {
+    background-color: #6495ED;
+    width: 260px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    text-align: center;
+    align-items: center;
+    padding: 40px 60px 120px 60px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 6px, rgba(0, 0, 0, 0.10) 0px 3px 6px;
+}
+
+.form-content input {
+    border: none;
+    height: 30px;
+    width: 200px;
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+}
+
+.form-content h3 {
+    color: #ffffff;
+    font-size: 22px;
 }
 
 .card {
@@ -51,8 +116,8 @@ h1 {
 }
 
 h3 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 20px;
     color: #000000;
 }
@@ -62,22 +127,86 @@ h3 {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    font-weight: 600;
+}
+
+.card-delete {
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 1280px) {
+
+    .page-header {
+        justify-content: space-around;
+        padding: 0 50px;
+    }
+    .user-info {
+        width: 10%;
+    }
+
     .main-content {
-        width: 50vw;
+        width: 35vw;
     }
 
     .card-content {
-        width: 80%;
+        width: 70%;
     }
 
     .card-info {
         flex-wrap: wrap;
-        width: 5%;
+        width: 10%;
         align-items: flex-end;
         align-content: flex-end;
         justify-content: center;
+        line-height: 30px;
     }
+}
+
+.avatar-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.logout-button {
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #EDBC64;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.add-post {
+    width: 100%;
+    position: relative;
+}
+
+.area-post {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    height: 160px;
+    border: none;
+    resize: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 6px, rgba(0, 0, 0, 0.10) 0px 3px 6px;
+}
+
+.post-button {
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    top: 76%;
+    right: 0;
+    right: 15px;
+    border-radius: 5px;
 }

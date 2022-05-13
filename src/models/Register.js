@@ -1,3 +1,5 @@
+import Api from "./Api.js";
+
 class Register {
     static registerForm() {
         const register = document.getElementById('registerForm');
@@ -11,10 +13,10 @@ class Register {
         form.setAttribute('id', 'register-form');
 
         username.placeholder = 'Nome de usuário';
-        email.placeholder = 'seuemail@provedor.com';
-        avatar.placeholder = 'Envia a url da imagem desejada';
-        password.placeholder = 'Digite uma senha';
-        submitButton.innerText = 'Criar novo usuário';
+        email.placeholder = 'Email';
+        avatar.placeholder = 'Foto de perfil';
+        password.placeholder = 'Senha';
+        submitButton.innerText = 'Cadastrar';
 
         username.name = 'username';
         email.name = 'email';
@@ -25,8 +27,42 @@ class Register {
         form.append(username, email, avatar, password, submitButton);
         register.append(form);
     }
+
+    static getNewUserData() {
+        const registerForm = document.getElementById('register-form');
+        registerForm.addEventListener('submit', this.createNewUser);
+    }
+
+    static createNewUser(event) {
+        event.preventDefault();
+
+        const formArr = [...event.target];
+        const dataObj = {};
+    
+        formArr.forEach((element) => {
+            if(element.name !== 'submitBtn') {
+                dataObj[element.name] = element.value;
+            }
+        });
+    
+        Api.createUser(dataObj);
+    }
+
+    static createFormObj(event) {
+        event.preventDefault();
+        const formArr = [...event.target];
+        const dataObj = {};
+    
+        formArr.forEach((element) => {
+            if(element.name !== 'submitBtn') {
+                dataObj[element.name] = element.value;
+            }
+        });
+        return dataObj;
+    }
 }
 
 Register.registerForm();
+Register.getNewUserData();
 
 //export default Register
