@@ -11,22 +11,26 @@ class Cards {
     static generateCard(postObj, userId) {
         const cardSection = document.getElementById('cardSection');
         const cardMain = document.createElement('li');
+        const cardContent = document.createElement('div'); 
         const cardImg = document.createElement('img');
-        const cardContent = document.createElement('div');
+        const cardPost = document.createElement('div');
         const cardAuthor = document.createElement('h3');
         const cardText = document.createElement('div');
         const cardInfo = document.createElement('div');
+        const cardModify = document.createElement('div');
         const cardDate = document.createElement('div');
 
         const date = new Date(postObj.createdAt);
 
         cardMain.classList.add('card');
         cardMain.setAttribute('id', 'post-' + postObj.id);
-        cardImg.classList.add('card-img');
         cardContent.classList.add('card-content');
+        cardImg.classList.add('card-img');
+        cardPost.classList.add('card-post');
         cardText.classList.add('card-text');
         cardText.setAttribute('id', 'text-' + postObj.id);
         cardInfo.classList.add('card-info');
+        cardModify.classList.add('card-author-edit');
         
         
         cardDate.classList.add('card-date');
@@ -34,10 +38,10 @@ class Cards {
         cardImg.src = postObj.owner.avatarUrl;
         cardAuthor.innerText = postObj.owner.username;
         cardText.innerText += postObj.post;
-        cardDate.innerText = `${date.getDay()}/${date.getDate()}/${date.getFullYear()}`;
+        cardDate.innerText = `Postado em: ${date.getDay()}/${date.getDate()}/${date.getFullYear()}`;
 
-
-        cardContent.append(cardAuthor, cardText);
+        cardPost.append(cardAuthor, cardText);
+        cardContent.append(cardImg, cardPost);
         
         if(postObj.owner.id === userId) {
             const cardEdit = document.createElement('div');
@@ -50,15 +54,16 @@ class Cards {
             cardEdit.innerText = 'Editar';
             cardDelete.innerText = 'Apagar';
 
-            cardInfo.append(cardEdit, cardDelete, cardDate);
-            cardMain.append(cardImg, cardContent, cardInfo);
+            cardModify.append(cardEdit, cardDelete);
+            cardInfo.append(cardDate, cardModify);
+            cardMain.append(cardContent, cardInfo);
             cardSection.append(cardMain);
             this.deleteBtn(postObj.id);
             Posts.editPostArea(postObj.id);
         }
         else {
             cardInfo.append(cardDate);
-            cardMain.append(cardImg, cardContent, cardInfo);
+            cardMain.append(cardContent, cardInfo);
             cardSection.append(cardMain);
         }        
     }
