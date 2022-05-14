@@ -7,22 +7,26 @@
     <title>Catwitter</title>
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/style.css">
+    <script src="https://kit.fontawesome.com/1e3fdf6601.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <main id="mainContainer" class="container">
-        <header id="pageHeader" class="page-header">
-        </header>
+  <main id="mainContainer" class="container">
+    <header id="pageHeader" class="login-header">
+      <section class="pageTitle">
+        <h1 class="stroke shadow">Kenzwitter</h1>
+        <h2>Escreva sobre o que se passa na sua mente!</h2>
+      </section>
+    </header>
+
+    <section id="registerForm" class="register-form-content">
+      <h3>Cadastro</h3>
+    </section>
+
+    <section class="redirect-page">
+      <p>Já é cadastrado? Faça seu <a href="./login.html">login</a>.</p>
+    </section>
+  </main>
     
-        <section id="mainSection" class="main-content">
-          <section id="postSection" class="add-post">
-            
-          </section>
-          <ul id="cardSection" class="cards-container">
-    
-          </ul>
-        </section>
-      </main>
-    
-      <script type="module" src="./src/script.js"></script>
+      <script type="module" src="./src/models/Register.js"></script>
 </body>
 </html>

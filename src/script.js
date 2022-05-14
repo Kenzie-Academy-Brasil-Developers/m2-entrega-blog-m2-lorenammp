@@ -10,24 +10,17 @@ async function loggedUser() {
     User.showUserInfo(userObj);
     User.logout();
     
-    await Api.listPosts(1);
+    await Api.listPosts('page=1');
     const postObj = JSON.parse(localStorage.getItem('Posts'));
     
     Posts.postArea();
 
     Posts.getPost();
 
-    Posts.postPagination();
+    Cards.showCards(postObj, id);
 
-    postObj.data.forEach((element) => {
-        Cards.generateCard(element, id);
-    });
+    Posts.postPagination(postObj, id);
 }
-
-function deletePosts() {
-    
-}
-
 
 loggedUser();
 

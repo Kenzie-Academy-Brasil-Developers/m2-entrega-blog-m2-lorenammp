@@ -1,4 +1,5 @@
 import Api from "./Api.js";
+import Cards from "./Card.js";
 
 class Posts {
     static postArea() {
@@ -27,7 +28,6 @@ class Posts {
         const postObj = {};
         postObj.content = postArea.value;
         Api.createPost(postObj);
-        //location.reload();
     }
 
     static editPostArea(id) {
@@ -84,32 +84,54 @@ class Posts {
         })
     }
 
-    static async postPagination() {
-        const cardSection = document.getElementById('cardSection');
-        const cardPages = document.createElement('ul');
+    static postPagination(postObj, id) {
+        const cardSection = document.getElementById('postPagination');
+        
+        const leftArrow = document.createElement('li');
+        const leftIcon = document.createElement('i');
+        const rightArrow = document.createElement('li');
+        const rightIcon = document.createElement('i');
 
-        await Api.listPosts(1);
-        const postObj = JSON.parse(localStorage.getItem('Posts'));
+        leftIcon.classList.add('fa-solid', 'fa-angles-left');
+        leftIcon.setAttribute('id', 'leftArrow');
+        rightIcon.classList.add('fa-solid', 'fa-angles-right');
+        rightIcon.setAttribute('id', 'rightArrow');
 
-        for(let i = postObj.page; i < postObj.lastPage; i++) {
-            const page = document.createElement('li');
-            page.innerText = i;
+        leftArrow.append(leftIcon);
+        rightArrow.append(rightIcon);
+        cardSection.append(leftArrow, rightArrow);
 
-            if(i > 5) {
-                const page = document.createElement('li');
-                page.innerText = '...';
+        this.pageNavigation(postObj, id)
+    }
 
-                const lastpage = document.createElement('li');
-                page.innerText = postObj.lastPage;
+    static async pageNavigation(postObj, id) {
+        const left = document.getElementById('leftArrow');
+        left.addEventListener('click', (event) => {
+            this.loadNewPage(id, 'previousPage');
+        });
 
-                cardPages.append(page, lastpage);
-                break;
-            }
+        const right = document.getElementById('rightArrow');
+        right.addEventListener('click', (event) => {
+            this.loadNewPage(id, 'nextPage');
+        })
+    }
 
-            cardPages.append(page);
+    static async loadNewPage(id, page) {  
+
+        if(page !== null) {
+            const newPosts = JSON.parse(localStorage.getItem('Posts'));
+            await Api.listPosts(newPosts[page]);
+            const posts = JSON.parse(localStorage.getItem('Posts'));
+            console.log(posts)
+
+            this.cleanPosts();
+            Cards.showCards(posts, id);
         }
+    }
 
-        cardSection.append(cardPages);
+    static cleanPosts() {
+        const cardSection = document.getElementById('cardSection');
+        cardSection.replaceChildren();
     }
 }
 

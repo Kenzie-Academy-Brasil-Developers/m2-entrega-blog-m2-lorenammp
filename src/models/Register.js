@@ -11,6 +11,7 @@ class Register {
         const submitButton = document.createElement('button');
 
         form.setAttribute('id', 'register-form');
+        submitButton.classList.add('main-button');
 
         username.placeholder = 'Nome de usuário';
         email.placeholder = 'Email';
@@ -23,6 +24,8 @@ class Register {
         avatar.name = 'avatarUrl';
         password.name = 'password';
         submitButton.name = 'submitBtn';
+
+        password.type = 'password';
 
         form.append(username, email, avatar, password, submitButton);
         register.append(form);

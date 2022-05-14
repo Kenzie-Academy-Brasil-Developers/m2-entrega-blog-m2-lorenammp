@@ -2,6 +2,12 @@ import Api from "./Api.js";
 import Posts from "./Posts.js";
 
 class Cards {
+    static showCards(postObj, id) {
+        postObj.data.forEach((element) => {
+            this.generateCard(element, id);
+        });
+    }
+
     static generateCard(postObj, userId) {
         const cardSection = document.getElementById('cardSection');
         const cardMain = document.createElement('li');

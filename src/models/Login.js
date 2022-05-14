@@ -10,6 +10,7 @@ class Login {
 
         form.setAttribute('id', 'login-form');
         button.setAttribute('id', 'loginBtn');
+        button.classList.add('main-button');
 
         email.name = 'email';
         password.name = 'password';
@@ -18,6 +19,8 @@ class Login {
         email.placeholder = 'Email';
         password.placeholder = 'Senha';
         button.innerText = 'Fazer login';
+
+        password.type = 'password';
 
         form.append(email, password, button);
         login.append(form);

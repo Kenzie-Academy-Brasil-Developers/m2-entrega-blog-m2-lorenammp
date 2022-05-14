@@ -12,7 +12,7 @@ class Api {
         .then((res) => res.json())
         .then((res) => {
             if(res.status == 'error') {
-                console.log(res);
+                window.alert(res);
             }
             else {
                 Redirect.redirectPage('login.html');
@@ -34,9 +34,14 @@ class Api {
         })
         .then((res) => res.json())
         .then((res) => {
-            localStorage.setItem('Token', res.token)
-            localStorage.setItem('userId', res.userId)
-            Redirect.redirectPage('index.html');
+            if(res.status === 'error') {
+                window.alert('Dados de login incorretos!');
+            }
+            else {
+                localStorage.setItem('Token', res.token)
+                localStorage.setItem('userId', res.userId)
+                Redirect.redirectPage('main.html');
+            }
         })
         .catch((error) => console.log(error));
     }
@@ -57,7 +62,7 @@ class Api {
     }
 
     static async listPosts(page) {
-        const response = await fetch('https://api-blog-m2.herokuapp.com/post?page='+page, {
+        const response = await fetch('https://api-blog-m2.herokuapp.com/post?'+page, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
