@@ -50,13 +50,10 @@ body {
     border-bottom: 8px solid #574b90;
 }
 
-.login-header {
-    margin-top: 100px;
-}
-
 .pageTitle {
     width: 50vw;
-    margin: 40px auto;
+    margin: auto;
+    padding-top: 120px;
     text-align: center;
     line-height: 50px;
 }
@@ -260,7 +257,7 @@ h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 20px;
-    color: #000000;
+    color: #41494d;
 }
 
 .card-text {
@@ -272,7 +269,7 @@ h3 {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     font-weight: 600;
-    background-color: #eff4f7;
+    background-color: #f6fafc;
     height: 30px;
     display: flex;
     align-items: center;
@@ -282,6 +279,10 @@ h3 {
 
 .card-author-edit {
     display: flex;
+}
+
+.card-date {
+    color: #7f8385;
 }
 
 .card-delete {
@@ -318,10 +319,6 @@ h3 {
 
     .card-post {
         width: 85%;
-    }
-
-    .card-info {
-        
     }
 }
 
@@ -423,6 +420,10 @@ h3 {
     transition: all 1s ease-in-out;
     padding: 25px;
     box-sizing: border-box;
+    background-color: #f6fafc;
+    border-top: 3px solid #ffffff;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .edit-area {
@@ -435,7 +436,7 @@ h3 {
     resize: none;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #f1f2f6;
+    border: 1px solid #d8d9df;
 }
 
 .edit-post-button {
@@ -465,4 +466,69 @@ h3 {
 .edit-post-button:hover {
     background-position: right center;
     color: #381291;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 15%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    text-align: center;
+    background-color: #f1f2f6;
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    width: 420px;
+    min-height: 200px;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, 
+                rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5cd79;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    line-height: 36px;
+}
+
+.modal-header .fa-xmark {
+    position: fixed;
+    margin-left: 380px;
+    cursor: pointer;
+}
+
+.modal-body {
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 10px;
+    color: #303952;
 }

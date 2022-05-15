@@ -1,6 +1,19 @@
 import Redirect from "./Redirect.js";
+import Warning from "./Warning.js";
 
 class Api {
+    static errorRegister = {
+        title: 'Cadastro não efetuado',
+        message: 'Todos os campos devem ser preenchidos corretamente',
+        error: 'error'
+    };
+
+    static errorLogin = {
+        title: 'Não foi possível fazer login',
+        message: 'E-mail ou senha não foram inseridos corretamente. É necessário inserir os dados corretos e estar cadastro para realizar login.',
+        error: 'error'
+    }
+
     static async createUser(userData) {
         const response = await fetch('https://api-blog-m2.herokuapp.com/user/register', {
             method: "POST",
@@ -12,7 +25,7 @@ class Api {
         .then((res) => res.json())
         .then((res) => {
             if(res.status == 'error') {
-                window.alert(res);
+                Warning.modal(this.errorRegister);
             }
             else {
                 Redirect.redirectPage('login.html');
@@ -35,7 +48,7 @@ class Api {
         .then((res) => res.json())
         .then((res) => {
             if(res.status === 'error') {
-                window.alert('Dados de login incorretos!');
+                Warning.modal(this.errorLogin);
             }
             else {
                 localStorage.setItem('Token', res.token)
